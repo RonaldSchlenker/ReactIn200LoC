@@ -20,10 +20,11 @@ Advertisement
 Präsi
 ===
 
-* What is state / why we care about / how to deal with?
-  * begin with 2nd
-    * 
+Einleitung:
+  Vide Library
+  
 
+* What is state / why we care about / how to deal with?
 * (ganz am Anfang)
   * Natural language - Traffic Light - Can we say that "A traffic light has state"? -> Yes.
   * "Can I drive?" - "No, traffic light is red"... "can I drive now"? - "Yes, it's green now"
@@ -38,7 +39,16 @@ Präsi
     * Only if all 3 properties occur together, then it has relevance. This relevance, we express with the word "State".
   * Excurs: OOP
     * OOP is the 3 properties above, with 2 restrictions:
-      * (not a real restriction - leave that aside: )
+      * (not a real restriction - leave that aside: Programmer has to have a way of state encapsulation)
+      * Restrict property "Identifyability": Identifyability by means of absolute adressed locations in a (finite) adress space
+    * What if not?
+      * -> Identifiability without an adress space, but with rules or relations?
+        * What could that mean? Feeling: What are nat. numbers? Zero + Successors.
+        * How exactly?
+    * Joke: 
+      * We don't need existential type, HKTs, type classes, Rank-N types, type families, GADTs.
+      * We need only: Plain Old F#, crazy CE stuff, bad ass real world HM-ish type inference
+
 * Identifyable:
   * usually via a unique location ((absolute) address). Ex.: Traffic light
   * or: an invariant property: Car identity number at frame.
@@ -103,7 +113,10 @@ Präsi
     * Answer: 
 * I understood that: Adressing state relatively is an important distinction. It is important because it affects our abilities of expressing state-related problems.
 
-* Random number / Fibonacci / counter / PT1
+* Random number / Fibonacci / counter / Delay / PT1
+  * Fibonacci
+    * f.n = f.n-1 + f.n-2    | n >= 3
+    * f.2 = f.2 = 1          | Anfangswerte
 *  Why we need state: real worl is actio reactio. Modeling „free Fall of an object“, is impossible without state - inherently!
 * Why? Foto(!!) von fallendem Ball - das genügt nicht -invarianten wie masse, Luftwiderstandsbeiwert und Gravitation sowie (Höhe) genügen nicht. Man braucht
 * Damian Plaza - State?

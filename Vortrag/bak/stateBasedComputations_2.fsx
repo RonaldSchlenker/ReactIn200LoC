@@ -3,10 +3,10 @@ type Block<'output, 'state> = option<'state> -> ('output * 'state)
 
 type BlockBuilder() =
     member this.Bind(m: Block<'o1, 's1>, f: 'o1 -> Block<'o2, 's2>) : Block<_,_> =
-        fun stateOption ->
+        fun maybeState ->
             // wie kommen wir von option<('s1 * 's2)> nach (option<'s1> * option<'s2>) ?
             let mPrevState,fPrevState =
-                match stateOption with
+                match maybeState with
                 | None -> None,None
                 | Some (s1, s2) -> Some s1, Some s2
             
@@ -20,20 +20,30 @@ type BlockBuilder() =
     member this.Return(x: 'a) : Block<_,_> = fun _ -> x,()
 let block = BlockBuilder()
 
-let counter (initial: int) increment : Block<int, 'state> =
+let counter (initial: int) increment : Block<int,_> =
     fun maybeState ->
         let current = maybeState |> Option.defaultValue initial
         let value = current + increment
         value,value
 
+let delayBy1 defaultVal currVal =
+    fun maybeState ->
+        let state = maybeState |> Option.defaultValue defaultVal
+        state,currVal
+
 let makeAdd2CounterLikeItShouldBe =
     block {
         let! c1 = counter 0 1
         let! c2 = counter 100 10
-        let! delayed = delay
-        return float (c1 + c2)
+        let! delayedC2 = delayBy1 0 c2
+        return float (c1 + delayedC2)
     }
 
+let fib =
+    fun maybeState ->
+        let n,x1,x2 = maybeState |> Option.defaultValue (1, 1, 1)
+        let x = if n < 3 then 1 else x1 + x2
+        x, (n+1, x, x1)
 
 
 let o1,s1 = makeAdd2CounterLikeItShouldBe None
@@ -57,8 +67,9 @@ let myStream =
     }
     |> blockToIEnumerable
 
-myStream |> Seq.take 5 
+myStream |> Seq.take 5
 
+fib |> blockToIEnumerable |> Seq.take 10 |> Seq.toList
 
 //let makeAdd2CounterLikeItShouldBe : Block<_,int> =
 //    (makeCounter 0 1) |> bind (fun c1 ->
