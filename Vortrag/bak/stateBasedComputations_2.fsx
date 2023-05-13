@@ -39,6 +39,8 @@ let makeAdd2CounterLikeItShouldBe =
         return float (c1 + delayedC2)
     }
 
+/// f_n = f_n1 + f_n2    | n >= 3
+/// f_2 = f_2 = 1        | Anfangswerte
 let fib =
     fun maybeState ->
         let n,x1,x2 = maybeState |> Option.defaultValue (1, 1, 1)
@@ -70,6 +72,15 @@ let myStream =
 myStream |> Seq.take 5
 
 fib |> blockToIEnumerable |> Seq.take 10 |> Seq.toList
+
+block {
+    let! c = counter 0 1
+    let! d = delayBy1 0 c
+    return d
+}
+|> blockToIEnumerable |> Seq.take 10 |> Seq.toList
+
+
 
 //let makeAdd2CounterLikeItShouldBe : Block<_,int> =
 //    (makeCounter 0 1) |> bind (fun c1 ->

@@ -115,8 +115,8 @@ Einleitung:
 
 * Random number / Fibonacci / counter / Delay / PT1
   * Fibonacci
-    * f.n = f.n-1 + f.n-2    | n >= 3
-    * f.2 = f.2 = 1          | Anfangswerte
+    * f_n = f_n1 + f_n2    | n >= 3
+    * f_2 = f_2 = 1        | Anfangswerte
 *  Why we need state: real worl is actio reactio. Modeling „free Fall of an object“, is impossible without state - inherently!
 * Why? Foto(!!) von fallendem Ball - das genügt nicht -invarianten wie masse, Luftwiderstandsbeiwert und Gravitation sowie (Höhe) genügen nicht. Man braucht
 * Damian Plaza - State?
