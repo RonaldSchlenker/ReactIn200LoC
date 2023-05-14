@@ -49,10 +49,6 @@ Einleitung:
       * We don't need existential type, HKTs, type classes, Rank-N types, type families, GADTs.
       * We need only: Plain Old F#, crazy CE stuff, bad ass real world HM-ish type inference
 
-* Identifyable:
-  * usually via a unique location ((absolute) address). Ex.: Traffic light
-  * or: an invariant property: Car identity number at frame.
-  * IT: Pointer (memory address) / ID (database)
 
 ## Brainstorm
 
@@ -122,3 +118,8 @@ Einleitung:
 * Damian Plaza - State?
 * Absatz: „so will ich es haben“ - wie kommt man hin? Kreativ sein - hier kennen wir es: Task<T>
 * Let: = überschreiben. Das geht nicht. Deshalb; let desugar 
+
+* Identifyable:
+  * usually via a unique location ((absolute) address). Ex.: Traffic light
+  * or: an invariant property: Car identity number at frame.
+  * IT: Pointer (memory address) / ID (database)

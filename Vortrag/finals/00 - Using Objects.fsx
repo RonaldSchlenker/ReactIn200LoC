@@ -12,7 +12,7 @@ let counterFrom100By10 = counter 100 10
 counterFrom100By10()
 
 
-let makeAdd2Counter () =
+let crazyCounter () =
     let counter1 = counter 0 1
     let counter2 = counter 100 10
     fun () ->
@@ -20,9 +20,8 @@ let makeAdd2Counter () =
         let c2 = counter2()
         c1 + c2
     
-let special = makeAdd2Counter()
-
-special()
+let crazyCounter1 = crazyCounter()
+crazyCounter1()
 
 
 
