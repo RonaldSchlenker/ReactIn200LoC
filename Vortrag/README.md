@@ -67,7 +67,7 @@ Nicht vergessen:
 TODO
 ---
 * Composing functions is simple, convenient - but not always possible.
-* Joke: 
+* Joke:
   * We don't need existential type, HKTs, type classes, Rank-N types, type families, GADTs.
   * We need only: Plain Old F#, crazy CE stuff, bad ass real world HM-ish type inference
 
